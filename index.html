@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="index.css">
+    <title>Log In Bank Account</title>
+</head>
+<body>
+    <div id="log-in" class="login">
+        <h1 class="text-center">Welcome To Bank Account</h1>
+            <div class="form-group">
+              <label>Email address</label>
+              <input type="email" class="form-control" placeholder="Enter email">
+              <small class="form-text text-muted">We'll never share your email with anyone else.</small>
+              <br>
+              <label>Password</label>
+              <input type="password" class="form-control" placeholder="Password">
+              <br>
+              <div class="form-row">
+                <div class="col-7">
+                  <input type="text" class="form-control" placeholder="City">
+                </div>
+                <div class="col">
+                  <input type="text" class="form-control" placeholder="State">
+                </div>
+                <div class="col">
+                  <input type="text" class="form-control" placeholder="Zip">
+                </div>
+              </div>
+              <button id="submit-btn" class="btn btn-primary mt-3">Submit</button>
+            </div>
+    </div>
+
+    <div id="transaction-area">
+        <div class="container">
+            <div class="row">
+                <div class="card text-white bg-primary mb-3 col-md-3" style="max-width: 18rem;">
+                    <div class="card-header">Deposit</div>
+                    <div class="card-body">
+                      <h5 class="card-title">$$ <span id="currentDeposit">00</span></h5>
+                    </div>
+                </div>
+                <div class="col-md-1"></div>
+                <div class="card text-white bg-warning mb-3 col-md-3" style="max-width: 18rem;">
+                    <div class="card-header">Withdraw</div>
+                    <div class="card-body">
+                      <h5 class="card-title">$$00</h5>
+                    </div>
+                </div>
+                <div class="col-md-1"></div>
+                <div class="card text-white bg-danger mb-3 col-md-3" style="max-width: 18rem;">
+                    <div class="card-header">Balance</div>
+                    <div class="card-body">
+                      <h5 class="card-title">$$ <span id="currentBalance">1000</span></h5>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-5">
+                <div class="site form-group col-md-5">
+                    <h4>Deposit</h4>
+                    <br>
+                    <input id="depositAmount" type="text" class="form-control" placeholder="Amount you want to Deposit...">
+                    <br>
+                    <button id="deposit" class="btn btn-success">Deposit</button>
+                </div>
+                <div class="col-md-2"></div>
+                <div class="site form-group col-md-5">
+                    <h4>withdraw</h4>
+                    <br>
+                    <input type="text" class="form-control" placeholder="Amount you want to withdraw...">
+                    <br>
+                    <button class="btn btn-success">Withdraw</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+      <script>
+          // submit btn handler
+          const submitBtn = document.getElementById("submit-btn");
+          submitBtn.addEventListener("click",function () {
+            const submitArea = document.getElementById("log-in");
+              submitArea.style.display="none";
+              const transactionArea = document.getElementById("transaction-area");
+              transactionArea.style.display = "block";
+            })
+
+          // deposit btn handler
+          const depositBtn= document.getElementById("deposit");
+            depositBtn.addEventListener("click",function () {
+                const depositAmount = document.getElementById("depositAmount").value;
+                const depositNumber = parseFloat(depositAmount);
+
+                updateSpanText("currentDeposit",depositNumber);
+                updateSpanText("currentBalance",depositNumber);
+
+                document.getElementById("depositAmount").value="";                           
+            })
+
+            function updateSpanText(id,depositNumber) {
+                const current= document.getElementById(id).innerText;
+                const currentNumber = parseFloat(current);
+                const total = depositNumber + currentNumber;
+                document.getElementById(id).innerText=total;
+            }
+            
+      </script>
+
+
+
+
+
+
+   
+</body>
+</html>

@@ -1,0 +1,21 @@
+body{
+    padding: 50px;
+}
+.login{
+    padding: 50px;
+    border-radius: 5px;
+    box-shadow: 5px 5px 10px mediumvioletred;
+}
+#transaction-area{
+    display: none;
+}
+.card{
+    padding: 20px;
+}
+
+.site{
+    padding: 50px;
+    border-radius: 5px;
+    box-shadow: 5px 5px 10px mediumvioletred;
+    margin-right: -90px;
+}
